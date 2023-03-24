@@ -28,7 +28,6 @@ const PanelItems = ({ name, ...rest }: PanelItemsProps) => {
 const LeftPanel = ({ ...rest }) => {
   return (
     <Flex
-      bg="gray.700"
       px={"5"}
       flex="1"
       overflow={"auto"}

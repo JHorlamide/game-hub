@@ -4,7 +4,7 @@ import GameGrid from "../GameGrid/GameGrid";
 
 const RightPanel = ({ ...rest }) => {
   return (
-    <Box bg="gray.900" {...rest} overflow="auto">
+    <Box {...rest} overflow="auto">
       <GameGrid />
     </Box>
   );

@@ -4,7 +4,7 @@ import RightPanel from "../RightPanel/RightPanel";
 
 const Layout = () => {
   return (
-    <Flex mt="5px" h="auto">
+    <Flex mt="5px">
       
       <LeftPanel
         width={{ md: "20%" }}
