@@ -18,6 +18,7 @@ export const GameCard = ({ game }: Props) => {
           width="auto"
           h="auto"
         />
+        
         <CardBody>
           <Stack>
             <Heading fontSize={"2xl"}>{game.name}</Heading>
