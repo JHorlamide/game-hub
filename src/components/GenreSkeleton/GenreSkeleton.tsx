@@ -1,15 +1,15 @@
 import {
   SkeletonCircle,
   SkeletonText,
-  VStack,
+  HStack,
 } from "@chakra-ui/react";
 
 const GenreSkeleton = () => {
   return (
-    <VStack>
+    <HStack spacing={2}>
       <SkeletonCircle size="10" />
       <SkeletonText />
-    </VStack>
+    </HStack>
   );
 };
 

@@ -9,7 +9,10 @@ const Layout = () => {
 
   return (
     <Flex mt="5px">
-      <LeftPanel onSelectGenre={(genre) => setSelectedGenre(genre)} />
+      <LeftPanel
+        selectedGenre={selectedGenre}
+        onSelectGenre={(genre) => setSelectedGenre(genre)}
+      />
       <GameGrid selectedGenre={selectedGenre} />
     </Flex>
   );

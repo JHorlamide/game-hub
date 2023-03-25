@@ -14,10 +14,25 @@ import getCroppedImage from "../../services/image-url";
 import GenreSkeleton from "../GenreSkeleton/GenreSkeleton";
 
 interface Props {
+  selectedGenre: Genre | null;
   onSelectGenre: (genre: Genre) => void;
 }
 
-const LeftPanel = ({ onSelectGenre }: Props) => {
+const selectedButtonStyle = (condition: boolean) => {
+  if (condition === true) {
+    return {
+      bg: "gray.500",
+      fontWeight: "normal",
+      borderRadius: "10px",
+      px: "8px",
+      py: "4px",
+    };
+  }
+
+  return null;
+};
+
+const LeftPanel = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data: genres, isLoading } = useFetchGenre();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -52,7 +67,9 @@ const LeftPanel = ({ onSelectGenre }: Props) => {
                     src={getCroppedImage(genre.image_background)}
                     borderRadius="8px"
                   />
+
                   <Button
+                    {...selectedButtonStyle(genre.id === selectedGenre?.id)}
                     fontSize="lg"
                     onClick={() => onSelectGenre(genre)}
                     variant="link"
