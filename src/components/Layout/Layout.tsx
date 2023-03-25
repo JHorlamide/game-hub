@@ -1,16 +1,16 @@
 import { Flex } from "@chakra-ui/react";
+import { useState } from "react";
+import { Genre } from "../../hooks/useFetchGenres";
 import LeftPanel from "../LeftPanel/LeftPanel";
-import RightPanel from "../RightPanel/RightPanel";
+import GameGrid from "../GameGrid/GameGrid";
 
 const Layout = () => {
+  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+
   return (
     <Flex mt="5px">
-      
-      <LeftPanel
-        width={{ md: "20%" }}
-        display={{ base: "none", md: "block" }}
-      />
-      <RightPanel width={{ base: "100%", sm: "100%", md: "80%" }} />
+      <LeftPanel onSelectGenre={(genre) => setSelectedGenre(genre)} />
+      <GameGrid selectedGenre={selectedGenre} />
     </Flex>
   );
 };

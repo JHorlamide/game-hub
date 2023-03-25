@@ -9,7 +9,7 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import { Badge, HStack, Icon, Flex } from "@chakra-ui/react";
+import { HStack, Icon, Flex } from "@chakra-ui/react";
 import { Platform } from "../../hooks/useFetchGame";
 import { IconType } from "react-icons";
 import CriticScore from "../CriticScore/CriticScore";
@@ -33,10 +33,10 @@ const PlatformIconList = ({ platforms, score }: Props) => {
   };
 
   return (
-    <Flex justify={"space-between"}>
-      <HStack spacing={2} my={2}>
+    <Flex justify={"space-between"} align="center">
+      <HStack spacing={2} my={1}>
         {platforms.map((platform) => (
-          <Icon as={iconMap[platform.slug]} color="gray.500" />
+          <Icon key={platform.id} as={iconMap[platform.slug]} color="gray.500" />
         ))}
       </HStack>
 

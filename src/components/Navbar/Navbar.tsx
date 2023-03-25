@@ -44,12 +44,12 @@ const SearchInput = () => {
       <Input
         _placeholder={{
           opacity: "0.6",
-          color: "gray.200",
+          color: "gray.500",
           fontSize: "15px",
         }}
         placeholder="Search games"
         height="45px"
-        bg={"gray.800"}
+        bg={"gray.700"}
         border="none"
         focusBorderColor="none"
         borderRadius={"20px"}
