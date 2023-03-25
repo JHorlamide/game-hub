@@ -3,6 +3,7 @@ import useFetchGame from "../../hooks/useFetchGame";
 import { Genre } from "../../hooks/useFetchGenres";
 import GameCard from "../GameCard/GameCard";
 import GameCardSkeleton from "../GameCardSkeleton/GameCardSkeleton";
+import PlatformSelector from "../PlatformSelector/PlatformSelector";
 
 interface Props {
   selectedGenre: Genre | null;
@@ -15,7 +16,9 @@ const GameGrid = ({ selectedGenre }: Props) => {
   return (
     <Box px="20px" py="10px" width={{ base: "100%", sm: "100%", md: "80%" }}>
       {error && <p>{error}</p>}
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3 }} spacing={5}>
+      <PlatformSelector />
+
+      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3 }} spacing={5} mt={2}>
         {isLoading &&
           skeletons.map((skeleton) => <GameCardSkeleton key={skeleton} />)}
 
