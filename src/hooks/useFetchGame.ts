@@ -1,3 +1,4 @@
+import { GameQuery } from "../components/Layout/Layout";
 import useDataFetch from "./useDataFetch";
 import { Genre } from "./useFetchGenres";
 
@@ -15,10 +16,16 @@ export interface Game {
   metacritic: number;
 }
 
-const useFetchGame = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => useDataFetch<Game>(
+const useFetchGame = (gameQuery: GameQuery) => useDataFetch<Game>(
   "/games",
-  { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
-  [selectedGenre?.id, selectedPlatform?.id]
+  {
+    params: {
+      genres: gameQuery.genre?.id,
+      platforms: gameQuery.platform?.id,
+      ordering: gameQuery.sortOrder
+    }
+  },
+  [gameQuery]
 );
 
 export default useFetchGame;

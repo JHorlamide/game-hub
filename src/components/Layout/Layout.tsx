@@ -1,28 +1,33 @@
-import { Box, Flex, Stack } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import { useState } from "react";
 import { Genre } from "../../hooks/useFetchGenres";
 import LeftPanel from "../LeftPanel/LeftPanel";
 import GameGrid from "../GameGrid/GameGrid";
-import PlatformSelector from "../PlatformSelector/PlatformSelector";
 import { Platform } from "../../hooks/useFetchGame";
 
+export interface GameQuery {
+  genre: Genre | null;
+  sortOrder: string;
+  platform: Platform | null;
+}
+
 const Layout = () => {
-  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-    null
-  );
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
     <Flex mt="5px">
       <LeftPanel
-        selectedGenre={selectedGenre}
-        onSelectGenre={(genre) => setSelectedGenre(genre)}
+        selectedGenre={gameQuery.genre}
+        onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
       />
 
       <GameGrid
-        selectedPlatform={selectedPlatform}
-        selectedGenre={selectedGenre}
-        onSelectPlatform={(Platform) => setSelectedPlatform(Platform)}
+        sortOrder={gameQuery.sortOrder}
+        gameQuery={gameQuery}
+        onSelectOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })}
+        onSelectPlatform={(platform) =>
+          setGameQuery({ ...gameQuery, platform })
+        }
       />
     </Flex>
   );
