@@ -3,6 +3,7 @@ import { Game } from "../../hooks/useFetchGame";
 import getCroppedImage from "../../services/image-url";
 import PlatformIconList from "../PlatformIcon/PlatformIconList";
 import GameCardContainer from "../GameCardContainer";
+import Emoji from "../Emoji";
 
 interface Props {
   game: Game;
@@ -27,7 +28,9 @@ export const GameCard = ({ game }: Props) => {
               score={game.metacritic}
             />
           </Stack>
-          <Heading fontSize={"2xl"}>{game.name}</Heading>
+          <Heading fontSize={"2xl"}>
+            {game.name} <Emoji rating={game.rating_top} />
+          </Heading>
         </CardBody>
       </Card>
     </GameCardContainer>
