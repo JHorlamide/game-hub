@@ -1,6 +1,5 @@
 import { GameQuery } from "../components/Layout/Layout";
 import useDataFetch from "./useDataFetch";
-import { Genre } from "./useFetchGenres";
 
 export interface Platform {
   id: number;
@@ -22,7 +21,8 @@ const useFetchGame = (gameQuery: GameQuery) => useDataFetch<Game>(
     params: {
       genres: gameQuery.genre?.id,
       platforms: gameQuery.platform?.id,
-      ordering: gameQuery.sortOrder
+      ordering: gameQuery.sortOrder,
+      search: gameQuery.searchText
     }
   },
   [gameQuery]

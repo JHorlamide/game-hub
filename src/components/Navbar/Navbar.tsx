@@ -1,78 +1,31 @@
-import {
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Image,
-  HStack,
-  Switch,
-  Text,
-  Show,
-  Box,
-  useColorMode,
-} from "@chakra-ui/react";
-import { BsSearch } from "react-icons/bs";
+import { Image, HStack, Show, Box } from "@chakra-ui/react";
 import Logo from "../../assets/logo.webp";
+import ColorModeSwitch from "../ColorModeSwitch/ColorModeSwitch";
+import SearchInput from "../SearchInput/SearchInput";
 
-const ColorModeSwitch = () => {
-  const { toggleColorMode, colorMode } = useColorMode();
+interface Props {
+  onSetSearchInput: (searchText: string) => void;
+}
 
-  return (
-    <HStack spacing={1} align="center">
-      <Switch
-        isChecked={colorMode === "dark"}
-        onChange={toggleColorMode}
-        width={"45px"}
-        size={"md"}
-        colorScheme="green"
-      />
-      <Text fontSize="15px" fontWeight="medium" flexShrink={0}>
-        Dark Mode
-      </Text>
-    </HStack>
-  );
-};
-
-const SearchInput = () => {
-  return (
-    <InputGroup width={"80%"} alignItems="center">
-      <InputLeftElement
-        paddingTop={"5px"}
-        pointerEvents={"none"}
-        children={<BsSearch color="gray.3000" />}
-      />
-
-      <Input
-        _placeholder={{
-          opacity: "0.6",
-          color: "gray.500",
-          fontSize: "15px",
-        }}
-        placeholder="Search games"
-        height="45px"
-        bg={"gray.700"}
-        border="none"
-        focusBorderColor="none"
-        borderRadius={"20px"}
-      />
-    </InputGroup>
-  );
-};
-
-const Navbar = () => {
+const Navbar = ({ onSetSearchInput }: Props) => {
   return (
     <HStack
       spacing={{ base: 10, md: 4 }}
       py={{ base: "2", md: "4" }}
       px={{ base: "2", md: "4" }}
-      justify={{ base: "space-between", md: "space-evenly" }}
+      justify={{ base: "space-between", md: "space-between" }}
       align={"center"}
     >
-      <Box flexShrink={0}>
-        <Image objectFit={"cover"} src={Logo} boxSize="60px" loading="lazy" />
-      </Box>
+      <Image
+        flexShrink={0}
+        objectFit={"cover"}
+        src={Logo}
+        boxSize="60px"
+        loading="lazy"
+      />
 
       <Show above="md">
-        <SearchInput />
+        <SearchInput onSetSearchInput={onSetSearchInput} />
       </Show>
 
       <ColorModeSwitch />
