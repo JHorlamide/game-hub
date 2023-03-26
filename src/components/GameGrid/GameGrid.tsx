@@ -2,6 +2,7 @@ import { Box, Flex, SimpleGrid } from "@chakra-ui/react";
 import useFetchGame, { Platform } from "../../hooks/useFetchGame";
 import GameCard from "../GameCard/GameCard";
 import GameCardSkeleton from "../GameCardSkeleton/GameCardSkeleton";
+import GameHeading from "../GameHeading";
 import { GameQuery } from "../Layout/Layout";
 import PlatformSelector from "../PlatformSelector/PlatformSelector";
 import SortSelector from "../SortSelector/SortSelector";
@@ -21,6 +22,8 @@ const GameGrid = (props: Props) => {
   return (
     <Box px="20px" py="10px" width={{ base: "100%", sm: "100%", md: "80%" }}>
       {error && <p>{error}</p>}
+      <GameHeading gameQuery={gameQuery} />
+      
       <Flex py={5}>
         <PlatformSelector
           selectedPlatform={gameQuery.platform}
