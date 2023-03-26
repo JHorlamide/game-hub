@@ -1,4 +1,4 @@
-import useDataFetch from "./useDataFetch";
+import genres from "../data/genres";
 
 export interface Genre {
   id: number;
@@ -6,5 +6,5 @@ export interface Genre {
   image_background: string;
 }
 
-const useFetchGenre = () => useDataFetch<Genre>("/genres");
+const useFetchGenre = () => ({ data: genres, isLoading: false, error: null});
 export default useFetchGenre;

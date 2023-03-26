@@ -11,7 +11,6 @@ import {
 } from "@chakra-ui/react";
 import useFetchGenre, { Genre } from "../../hooks/useFetchGenres";
 import getCroppedImage from "../../services/image-url";
-import GenreSkeleton from "../GenreSkeleton/GenreSkeleton";
 
 interface Props {
   selectedGenre: Genre | null;
@@ -34,7 +33,6 @@ const selectedButtonStyle = (condition: boolean) => {
 
 const LeftPanel = ({ selectedGenre, onSelectGenre }: Props) => {
   const { data: genres, isLoading } = useFetchGenre();
-  const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
     <Flex
@@ -44,8 +42,6 @@ const LeftPanel = ({ selectedGenre, onSelectGenre }: Props) => {
       width={{ md: "20%" }}
       display={{ base: "none", md: "block" }}
     >
-      {isLoading &&
-        skeletons.map((skeleton) => <GenreSkeleton key={skeleton} />)}
       <VStack spacing={6} alignItems="start">
         <Heading as={"h1"} fontWeight="bold" fontSize={"25px"}>
           Genres
