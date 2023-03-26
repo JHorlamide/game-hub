@@ -1,4 +1,4 @@
-import { Box, Flex, SimpleGrid } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
 import useFetchGame, { Platform } from "../../hooks/useFetchGame";
 import GameCard from "../GameCard/GameCard";
 import GameCardSkeleton from "../GameCardSkeleton/GameCardSkeleton";
@@ -19,9 +19,10 @@ const GameGrid = (props: Props) => {
   const { data: games, isLoading, error } = useFetchGame(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6];
 
+  if (error) return <Text>{error}</Text>;
+
   return (
     <Box px="20px" py="10px" width={{ base: "100%", sm: "100%", md: "80%" }}>
-      {error && <p>{error}</p>}
       <GameHeading gameQuery={gameQuery} />
 
       <Flex py={5}>
