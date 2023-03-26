@@ -1,13 +1,13 @@
 import {
   Flex,
   Stack,
-  Text,
   VStack,
   List,
   ListItem,
   Image,
   HStack,
   Button,
+  Heading,
 } from "@chakra-ui/react";
 import useFetchGenre, { Genre } from "../../hooks/useFetchGenres";
 import getCroppedImage from "../../services/image-url";
@@ -47,9 +47,9 @@ const LeftPanel = ({ selectedGenre, onSelectGenre }: Props) => {
       {isLoading &&
         skeletons.map((skeleton) => <GenreSkeleton key={skeleton} />)}
       <VStack spacing={6} alignItems="start">
-        <Text as={"h1"} fontWeight="bold" fontSize={"25px"}>
+        <Heading as={"h1"} fontWeight="bold" fontSize={"25px"}>
           Genres
-        </Text>
+        </Heading>
 
         <Stack spacing={4}>
           <List spacing={4}>
@@ -63,6 +63,7 @@ const LeftPanel = ({ selectedGenre, onSelectGenre }: Props) => {
                   }}
                 >
                   <Image
+                    objectFit="cover"
                     boxSize="32px"
                     src={getCroppedImage(genre.image_background)}
                     borderRadius="8px"
