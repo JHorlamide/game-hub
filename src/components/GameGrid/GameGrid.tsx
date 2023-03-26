@@ -23,7 +23,7 @@ const GameGrid = (props: Props) => {
     <Box px="20px" py="10px" width={{ base: "100%", sm: "100%", md: "80%" }}>
       {error && <p>{error}</p>}
       <GameHeading gameQuery={gameQuery} />
-      
+
       <Flex py={5}>
         <PlatformSelector
           selectedPlatform={gameQuery.platform}
