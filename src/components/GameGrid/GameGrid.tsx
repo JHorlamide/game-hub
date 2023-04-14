@@ -1,4 +1,4 @@
-import { Box, Flex, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Flex, SimpleGrid, Text, Spinner } from "@chakra-ui/react";
 import useFetchGame, { Platform } from "../../hooks/useFetchGame";
 import GameCard from "../GameCard/GameCard";
 import GameCardSkeleton from "../GameCardSkeleton/GameCardSkeleton";
